@@ -3,5 +3,5 @@ django-widget-tweaks
 pillow
 gunicorn
 django-heroku
-psycopy2
+psycopg2
 whitenoise
