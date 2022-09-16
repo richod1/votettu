@@ -1,3 +1,7 @@
 django
 django-widget-tweaks
 pillow
+gunicorn
+django-heroku
+psycopy2
+whitenoise

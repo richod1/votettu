@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = 'o0%4arn*&k50_$asckk9b99+)uci5$+y6w87nh*n^a%4e((y+#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['votettu.herokuapp.com']
 
 
 # Application definition
@@ -75,10 +76,23 @@ WSGI_APPLICATION = 'ovs.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+    #'default': {
+      #  'ENGINE': 'django.db.backends.sqlite3',
+       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
+#}
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME':'d9c9nm5me1dooi',
+            'USER': 'owaxkkyrjcumtt',
+            'PASSWORD': 'c9ef706407606d7efa40eb611819eb4c03b3d47f975c1a40c2e36c9e96398c6a',
+            'HOST':'ec2-3-208-79-113.compute-1.amazonaws.com',
+            'PORT':'5432'
+        
     }
 }
 
@@ -119,8 +133,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATIC_URL='./static'
+django_heroku.settings(locals())
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
